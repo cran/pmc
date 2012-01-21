@@ -1,0 +1,19 @@
+\begin{thebibliography}{2}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Butler and King(2004)}]{Butler2004}
+Butler, M.~A., King, A.~A., Dec. 2004. {Phylogenetic Comparative Analysis: A
+  Modeling Approach for Adaptive Evolution}. The American Naturalist 164~(6),
+  683--695.
+\newline\urlprefix\url{http://www.jstor.org/stable/10.1086/426002}
+
+\bibitem[{Harmon et~al.(2008)Harmon, Weir, Brock, Glor, and
+  Challenger}]{Harmon2008}
+Harmon, L.~J., Weir, J.~T., Brock, C.~D., Glor, R.~E., Challenger, W., 2008.
+  {Geiger: investigating evolutionary radiations}. Bioinformatics 24~(1),
+  129--131.
+
+\end{thebibliography}
