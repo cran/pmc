@@ -76,28 +76,15 @@ pmc <- function(tree, data,
   lr_orig <- -2*(loglik(A) - loglik(B)) 
 
   reps <- sfLapply(1:nboot, function(i){
-    ## Do the A sims
-    simA <- simulate(A)
-    if (is(A, "ouchtree"))
-      simA <- simA$rep.1 # reformat output from ouch's simulate method
-    AfitA <- update(A, data=simA)
-    # The cross-comparison needs to check the data-formats match
-    if((is(A, "ouchtree") & !is(B, "ouchtree")) |
-       (!is(A, "ouchtree") & is(B, "ouchtree")))
-      simA <- format_data(get_phy(A), get_data(A))$data
-    BfitA <- update(B, data=simA)
+
+    null_sims <- simulate_and_update(A,B)
+    AfitA <- null_sims[[1]]
+    BfitA <- null_sims[[2]]
 
     ## Do the B sims
-    simB <- simulate(B)
-    if (is(B, "ouchtree"))
-      simB <- simB$rep.1
-    BfitB <- update(B, data=simB)
-    # The cross-comparison needs to check the data-formats match
-    if((is(A, "ouchtree") & !is(B, "ouchtree")) |
-       (!is(A, "ouchtree") & is(B, "ouchtree")))
-      simB <- format_data(get_phy(B), get_data(B))$data
-    AfitB <- update(A, data=simB)
-
+    test_sims <- simulate_and_update(B,A)
+    BfitB <- test_sims[[1]] 
+    AfitB <- test_sims[[2]]
 
     lrA <- -2*(loglik(AfitA) - loglik(BfitA)) 
     lrB <- -2*(loglik(AfitB) - loglik(BfitB))
@@ -118,6 +105,71 @@ pmc <- function(tree, data,
                  A=A, B=B, call=match.call()) 
   class(output) <- "pmc"
   output
+}
+
+
+#' Internal helper function
+#' Simulates under model A, updates both A and B based on that data
+#' @param A model with simulate & update methods
+#' @param B another model with simulate & update methods
+#' @return a list of with fit of A on data simulated under A,
+#' the fit on B on data simulated under A, and the simulated data itself
+simulate_and_update <- function(A,B){
+    error <- 1
+    while(error){ ## Some sims don't converge. 
+
+      simA <- simulate(A)
+      simA <- matchformats(A, B, simA)
+      AfitA <- try( update(A, data=simA[[1]]) )
+      BfitA <- try( update(B, data=simA[[2]]) )
+
+      if(!is(AfitA, "try-error") && !is(BfitA, "try-error") )
+        error <- 0
+      else
+        warning("model fitting failed on data, simulating again")
+    }
+    list(AfitA, BfitA, simA)
+}
+
+#' Internal helper function to match data formats
+#' @param A model with simulate & update methods
+#' @param B another model with simulate & update methods
+#' @param sim simulations produced by model A
+#' @return a list of two data sets.  The first is in a format
+#' appropriate to update model A, the second is in the format
+#' approriate to update model B
+matchformats <- function(A, B, sim){
+  sim_for_updating_A <- sim
+  sim_for_updating_B <- sim
+  # reformat output from ouch's simulate method
+  if (is(A, "ouchtree")){
+    sim_for_updating_A <- sim$rep.1     
+    sim_for_updating_B <- sim$rep.1
+  }
+  # The cross-comparison needs to check the data-formats match
+  if(is(A, "ouchtree") & !is(B, "ouchtree")){
+    ## this gets data into geiger format
+    apeformatted <- format_data(get_phy(A), sim_for_updating_A)
+    data <-apeformatted$data
+
+    ## We just don't want data frame outputs to pass to geiger
+    if(is(data, "data.frame")){
+      tmp <- data[[1]] # we want numeric data
+      names(tmp) <- rownames(data)
+      data <- tmp
+#    tmp <- na.exclude(data)
+#    tmp2 <- as.numeric(tmp)
+#    names(tmp2) <- names(tmp)
+#    data <- tmp2
+    }
+    sim_for_updating_B <- data
+  }
+  # The cross-comparison needs to check the data-formats match
+  if(!is(A, "ouchtree") & is(B, "ouchtree")){
+    sim_for_updating_B <- format_data(get_phy(A),
+                                      sim_for_updating_A)$data
+  }
+list(sim_for_updating_A, sim_for_updating_B)
 }
 
 #' plot the distributions
@@ -196,8 +248,13 @@ pmc_fit <- function(tree, data, model, options=list()){
     # first, check data formats
     if(is(tree, "ouchtree")){
       # assumes data is same order as nodelabels
+      if(is(data, "data.frame"))
+        data <- data[[1]] # we want numeric data
       names(data) <- tree@nodelabels
-      data <- data[data!=NA]
+      tmp <- na.exclude(data)
+      tmp2 <- as.numeric(tmp)
+      names(tmp2) <- names(tmp)
+      data <- tmp2
       tree <- convert(tree)
     }
     args <- c(list(tree=tree, data=data, model=model), options) 

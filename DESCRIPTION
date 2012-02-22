@@ -1,12 +1,13 @@
 Package: pmc
-Version: 0.0-5
+Version: 0.0-7
 Date: 2012-02-22
 Title: Phylogenetic Monte Carlo
 Author: Carl Boettiger <cboettig@gmail.com>
 Maintainer: Carl Boettiger <cboettig@gmail.com>
 Description: Monte Carlo based model choice for applied phylogenetics
         of continuous traits
-URL: http://www.carlboettiger.info
+URL: https://github.com/cboettig/pmc
+BugReports: https://github.com/cboettig/pmc/issues
 License: CC0
 Authors@R: person("Carl", "Boettiger", role=c("aut", "cre"),
         email="cboettig@gmail.com")
@@ -18,6 +19,6 @@ Collate: 'format_data.R' 'pmc.R' 'powercurve.R' 'wrappers_geiger.R'
         'wrappers_laser.R' 'wrappers_ouch.R' 'wrappers_treepar.R'
         'convert.R' 'treepalette.R' 'generics.R' 'data_documentation.R'
         'maticce.R'
-Packaged: 2012-03-01 16:56:09 UTC; root
+Packaged: 2012-06-20 16:59:10 UTC; cboettig
 Repository: CRAN
-Date/Publication: 2012-03-01 17:02:30
+Date/Publication: 2012-06-20 17:33:01
