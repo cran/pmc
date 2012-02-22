@@ -1,5 +1,5 @@
 Package: pmc
-Version: 0.0-7
+Version: 0.0-8
 Date: 2012-02-22
 Title: Phylogenetic Monte Carlo
 Author: Carl Boettiger <cboettig@gmail.com>
@@ -19,6 +19,7 @@ Collate: 'format_data.R' 'pmc.R' 'powercurve.R' 'wrappers_geiger.R'
         'wrappers_laser.R' 'wrappers_ouch.R' 'wrappers_treepar.R'
         'convert.R' 'treepalette.R' 'generics.R' 'data_documentation.R'
         'maticce.R'
-Packaged: 2012-06-20 16:59:10 UTC; cboettig
+Packaged: 2013-03-04 01:49:53 UTC; cboettig
+NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2012-06-20 17:33:01
+Date/Publication: 2013-03-04 07:19:19

@@ -3,6 +3,11 @@
 
 For a complete discription see [Issues page](https://github.com/cboettig/pmc/issues) on package development site on Github.  
 
+v0.0-8
+------
+* Updated vignette
+* Removed outdated COPYING file, see LICENSE
+
 v0.0-7
 ------
 * Allow cross comparisons between ouch-formatted & ape-formatted trees
