@@ -1,4 +1,4 @@
-#pmc.R
+# pmc.R
 
 
 #' Performs a phylogenetic monte carlo between modelA and modelB
@@ -60,10 +60,10 @@
 #' plot(eb_v_ou) 
 #' 
 #' @import snowfall 
-#' @import reshape
-#' @import TreeSim
 #' @import ouch
 #' @export
+# @enhance ouch
+# @suggest TreeSim
 pmc <- function(tree, data, 
                 modelA = c("BM", "OU", "lambda", "kappa", "delta", "EB",
                            "white", "trend", "hansen", "brown"), 
@@ -126,6 +126,7 @@ pmc <- function(tree, data,
 #'  A= a name for the first model in the pmc pairwise comparison
 #'  B= a name for the second model in the pairwise comparison
 #' @import ggplot2
+#' @import reshape2
 #' @method plot pmc
 #' @S3method plot pmc
 plot.pmc <- function(x, ...){
