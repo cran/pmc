@@ -76,8 +76,8 @@ tidy_pars <- function(model, label = deparse(substitute(model))){
                  out
           })
   tmp <- data.frame(t(rbind(mtrx, rep = 1:dim(mtrx)[[2]])))
-  i <- which(names(tmp)=="rep")
-  data.frame(comparison = label, tidyr::gather_(tmp, "parameter", "value", -i))
+  who <- names(tmp)[which(names(tmp)!="rep")]
+  data.frame(comparison = label, tidyr::gather_(tmp, "parameter", "value", who))
 }
 
 
@@ -128,11 +128,10 @@ pmc_fit <- function(tree, data, model, ...){
 
 #' @import ggplot2
 plot.pmc <- function(x, ...){
-    df <- data.frame(x$null, x$test)
-    colnames(df) <- c("null", "test")
-    dat <- tidyr::gather_(df, "variable", "value")
-    ggplot(dat) + geom_density(aes_string("value", fill="variable"), alpha=.7) +
-           geom_vline(x=x$lr, lwd=1, lty=2)
+    df <- data.frame(null = x$null, test = x$test)
+    dat <- tidyr::gather_(df, "variable", "value", gather_cols = c("null", "test"))
+    ggplot(dat) + geom_density(aes_string("value", fill = "variable"), alpha = .7) +
+           geom_vline(xintercept = x$lr, lwd = 1, lty = 2)
 }
 
 

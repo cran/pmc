@@ -1,9 +1,9 @@
-9756dc3d402b5bb36cff229d3a6838b3 *DESCRIPTION
+22fad177bc6398f9a2b173316f127fc8 *DESCRIPTION
 406146aca33178db955dfd381c1a5fc0 *NAMESPACE
-42f2fbccdf4c4e457c2cf4163bf3e2ed *NEWS
+15830cea8029afbb7ca2d3183034ea35 *NEWS
 0658880c6e39342a079d8de587da6945 *R/data_documentation.R
 74f5b05829df310f77855810485ca649 *R/geiger.R
-5d7e78df79f1d813a98484ff047e1e79 *R/pmc.R
+51588ece3b7cf9c7e94d27a06f100b3e *R/pmc.R
 5d6d3e73eb0062e2e3f45bbb5137a0f1 *R/template-package.r
 1dab38c2f2515b2c4b8bd3b2f9a5b98a *README.md
 e6a634edfaa4f5213bac8e8a2392d98c *build/vignette.rds
@@ -11,7 +11,7 @@ e6a634edfaa4f5213bac8e8a2392d98c *build/vignette.rds
 b5b3839c6b207a4c6d0a7eeea3e24228 *inst/CITATION
 95f883221d05e135e9affd8832eaaaa9 *inst/doc/pmc_tutorial.R
 277c732dbf15cf8902ba7f51081e1c28 *inst/doc/pmc_tutorial.Rmd
-0854404baa8d50e47911e16405da5d6a *inst/doc/pmc_tutorial.html
+8820911e83dc0351db828cf8aaefa85b *inst/doc/pmc_tutorial.html
 b7c48c079b532d4cc672ac01683e3a20 *man/anoles.Rd
 2170a1664f0582bb1d887b79dd013b49 *man/pmc.Rd
 e5a0b553caf6299e913260909b964e81 *man/pmc_fit.Rd
@@ -20,5 +20,5 @@ d36471f56161286dd42470c28d19ed92 *man/simulate.gfit.Rd
 209a6a2be25212594184f4bc7e052054 *man/update.gfit.Rd
 34600342c53430cd9ecc887000c13440 *tests/testthat.R
 e89619c792aaaa0492c03efb45adda60 *tests/testthat/test_ouch.R
-15695c943cdc17d8fb6167583a56b7ae *tests/testthat/test_pmc.R
+8a1dbce6853eb70bb6d867743a32f5a1 *tests/testthat/test_pmc.R
 277c732dbf15cf8902ba7f51081e1c28 *vignettes/pmc_tutorial.Rmd
