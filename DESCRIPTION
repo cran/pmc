@@ -1,5 +1,5 @@
 Package: pmc
-Version: 1.0.2
+Version: 1.0.3
 Title: Phylogenetic Monte Carlo
 Description: Monte Carlo based model choice for applied phylogenetics of
     continuous traits. Method described in  Carl Boettiger, Graham Coop,
@@ -14,10 +14,10 @@ LazyData: true
 VignetteBuilder: knitr
 Suggests: covr, gridExtra, knitr, testthat
 Imports: dplyr, geiger, ggplot2, parallel, ouch, tidyr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1.9000
 NeedsCompilation: no
-Packaged: 2016-06-11 21:42:32 UTC; root
+Packaged: 2018-05-17 20:51:52 UTC; cboettig
 Author: Carl Boettiger [aut, cre]
 Maintainer: Carl Boettiger <cboettig@gmail.com>
 Repository: CRAN
-Date/Publication: 2016-06-12 09:40:21
+Date/Publication: 2018-05-17 21:23:22 UTC
