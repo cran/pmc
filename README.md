@@ -1,5 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/cboettig/pmc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cboettig/pmc/actions/workflows/R-CMD-check.yaml)
 [![CRAN
@@ -8,7 +9,7 @@ status](https://www.r-pkg.org/badges/version/pmc)](https://cran.r-project.org/pa
 <!-- badges: end -->
 
 This is a lightweight implementation of my `pmc` package focusing on
-what I think are the more common use cases (e.g. it will no longer
+what I think are the more common use cases (e.g. it will no longer
 support comparisons of a `geiger` model against an `ouch` model).
 Further, it does not cover many of the newer model fitting that have
 been implemented since `pmc` was first released.
